@@ -11,7 +11,7 @@ Import-Module .\Interactive-FindUser.psm1
 # Start dynamic user search
 # You don't need to enter a full name,
 # just type a part of it and hit "Enter"
-# them function retuns you full name
+# then function retuns you full name
 $userName = Interactive-UserFind -Users_OU $UserOU
 
 pause
