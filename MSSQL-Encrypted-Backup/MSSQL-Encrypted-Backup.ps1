@@ -1,4 +1,9 @@
-﻿#region Define variables
+﻿param(
+    [parameter(Position=0)]
+        $creds
+    )
+
+#region Define variables
 $date            = Get-Date -Format dd.MM.yyyy
 $retentionPeriod = 6
 
@@ -23,8 +28,8 @@ $encryptionOption = New-SqlBackupEncryptionOption -Algorithm Aes256 -EncryptorTy
 Backup-SqlDatabase -ServerInstance localhost -Database $DBName -BackupFile $localBackupFile -EncryptionOption $encryptionOption
 
 # Copy backup file to remote storage
-New-PSDrive -Name BCK -PSProvider FileSystem -Root $remoteStorage
-Copy-Item $localBackupFile -Destination BCK:\
+New-PSDrive -Name BCK -PSProvider FileSystem -Root $remoteStorage -Credential $creds
+ROBOCOPY "$localBackupFolder" "$remoteStorage" /Z /NP /R:3 /W:300 /COPYALL
 
 # Remove Old DB backup
 $selection = ls BCK: | where {$_.Name -clike $fileName}
