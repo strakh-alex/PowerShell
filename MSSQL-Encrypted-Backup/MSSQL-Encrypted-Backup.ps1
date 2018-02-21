@@ -32,7 +32,7 @@ New-PSDrive -Name BCK -PSProvider FileSystem -Root $remoteStorage -Credential $c
 ROBOCOPY "$localBackupFolder" "$remoteStorage" /Z /NP /R:3 /W:300 /COPYALL
 
 # Remove Old DB backup
-$selection = ls BCK: | where {$_.Name -clike $fileName}
+$selection = ls BCK: | where {$_.Name -cmatch $fileName}
 
 foreach($file in $selection)
 {
