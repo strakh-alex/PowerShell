@@ -1,7 +1,7 @@
 #########################################################################
 #                                                                       #
-# Base on the requirements the script whould work with cyrillic symbols #
-# so you need Russian language pack installed                           #
+# Base on the requirements the script should work with cyrillic symbols #
+# so you need Russian language pack to be installed                     #
 #                                                                       #
 #########################################################################
 
