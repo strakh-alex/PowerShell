@@ -1,3 +1,10 @@
+#########################################################################
+#                                                                       #
+# Base on the requirements the script whould work with cyrillic symbols #
+# so you need Russian language pack installed                           #
+#                                                                       #
+#########################################################################
+
 [CmdletBinding()]
 
 param(
